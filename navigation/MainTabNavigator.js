@@ -9,11 +9,15 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/LoginScreen';
 
 export default TabNavigator(
   {
     Home: {
       screen: HomeScreen,
+    },
+    Login: {
+      screen: LoginScreen,
     },
   },
   {
@@ -26,11 +30,9 @@ export default TabNavigator(
           case 'Home':
             iconName = 'home';
             break;
-          case 'Links':
-            iconName = 'book';
+          case 'Login':
+            iconName = 'sign-in';
             break;
-          case 'Settings':
-            iconName = 'cog';
         }
         return (
           <FontAwesome
