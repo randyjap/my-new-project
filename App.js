@@ -19,7 +19,7 @@ export default class App extends React.Component {
             Accept: "application/json"
           },
           method: "POST"
-        }).then((response) => console.log(Object.keys(response))
+        }).then((response) => console.log(Object.keys(response)))
     }
   }
 
