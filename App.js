@@ -11,6 +11,15 @@ export default class App extends React.Component {
       let authorization_code = navState.url.match(regex)[1]
       console.log(authorization_code)
       // this.props.dispatch(userActionCreators.authenticationSuccess(accessToken))
+      const url = 'https://api.npr.org/authorization/v2/token'
+      fetch(url,
+        {
+          body: `grant_type=authorization_code&client_id=nprone_trial_mrrw1yBjHbZE&client_secret=jzg2hoVOvWEyIUzMPTnMImK8w1LKIInyxTZ0yIAy&code=${authorization_code}&redirect_uri=about%3A%2F%2Fcallback%2Flogin`,
+          headers: {
+            Accept: "application/json"
+          },
+          method: "POST"
+        }).then((response) => console.log(Object.keys(response))
     }
   }
 
