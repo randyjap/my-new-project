@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "my-new-projectt",
+    "name": "blank",
     "description": "An empty new project",
-    "slug": "my-new-projectt",
+    "slug": "blank",
     "privacy": "public",
     "sdkVersion": "18.0.0",
     "version": "1.0.0",
