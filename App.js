@@ -22,7 +22,17 @@ export default class App extends React.Component {
           method: "POST"
         }).then((response) => {
             const access_token = JSON.parse(response["_bodyText"])["access_token"]
-            if (access_token) console.log(access_token)
+            if (access_token) {
+              fetch("https://api.npr.org/listening/v2/recommendations?channel=npr", {
+                headers: {
+                  Accept: "application/json",
+                  Authorization: "Bearer 973225974b7cb2b60e89ded2cf14a0ae2a26aeff796435b7307e41b2f55e36ba39c8f1221918100e"
+                }
+              }).then((response) => {
+                console.log(JSON.parse(response["_bodyText"])["items"][0]["href"])
+              })
+            }
+
           }
         )
 
