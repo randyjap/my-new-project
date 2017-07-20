@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, WebView } from 'react-native';
+import { Constants, Audio } from 'expo';
 
 export default class App extends React.Component {
   // We watch for changes in navigation, because we asked Reddit to redirect us
@@ -26,10 +27,22 @@ export default class App extends React.Component {
               fetch("https://api.npr.org/listening/v2/recommendations?channel=npr", {
                 headers: {
                   Accept: "application/json",
-                  Authorization: "Bearer 973225974b7cb2b60e89ded2cf14a0ae2a26aeff796435b7307e41b2f55e36ba39c8f1221918100e"
+                  Authorization: `Bearer ${access_token}`
                 }
-              }).then((response) => {
-                console.log(JSON.parse(response["_bodyText"])["items"][0]["href"])
+              })
+              .then(response => response.json())
+              .then(responseJson => {
+                const media_url = responseJson["items"][0]["links"]["audio"][0]["href"]
+                console.log(media_url)
+                const soundObject = new Audio.Sound();
+                try {
+                  await soundObject.loadAsync(require(media_url));
+                  await soundObject.playAsync();
+                  // Your sound is playing!
+                } catch (error) {
+                  // An error occurred!
+                }
+
               })
             }
 
