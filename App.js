@@ -487,21 +487,16 @@ export default class App extends React.Component {
     }
   };
 
-  // render() {
-  //   const client_id = 'nprone_trial_mrrw1yBjHbZE'
-  //   const redirect_uri = 'about%3A%2F%2Fcallback%2Flogin'
-  //   const scope = 'listening.readonly'
-  //   const state = 'random_string'
-  //   const LOGIN_URL = `https://api.npr.org/authorization/v2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=${scope}&state=${state}`
-  //   console.log(this.state.access_token)
-  //   return (
-  //     this.state.access_token === null ? <WebView source={{uri: LOGIN_URL}} onNavigationStateChange={this.onNavigationStateChange} /> : <Text>Hello</Text>
-  //   )
-  // }
-
   render() {
-    return !this.state.fontLoaded
-      ? <View style={styles.emptyContainer} />
+    const client_id = 'nprone_trial_mrrw1yBjHbZE'
+    const redirect_uri = 'about%3A%2F%2Fcallback%2Flogin'
+    const scope = 'listening.readonly'
+    const state = 'random_string'
+    const LOGIN_URL = `https://api.npr.org/authorization/v2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=${scope}&state=${state}`
+    console.log(this.state.access_token)
+
+    return !this.state.fontLoaded || this.state.access_token === null
+      ? <WebView source={{uri: LOGIN_URL}} onNavigationStateChange={this.onNavigationStateChange} />
       : <View style={styles.container}>
           <View />
           <View style={styles.nameContainer}>
